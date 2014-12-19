@@ -209,6 +209,10 @@ extern          "C" {
      *  4. Replace snmp_send(ss,pdu) with snmp_sess_send(sessp,pdu)
      */
 
+    struct netsnmp_transport_s;
+
+    NETSNMP_IMPORT
+    void           *snmp_sess_open_C1(netsnmp_session *, struct netsnmp_transport_s **);
     NETSNMP_IMPORT
     void           *snmp_sess_open(netsnmp_session *);
     NETSNMP_IMPORT
@@ -238,6 +242,8 @@ extern          "C" {
     /*
      * Returns 0 if success, -1 if fail.
      */
+    NETSNMP_IMPORT
+    int             snmp_sess_read_C1(void *, int fd);
     NETSNMP_IMPORT
     int             snmp_sess_read(void *, fd_set *);
     /*
